@@ -1,6 +1,5 @@
 import { useLocation } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from 'react';
-import { FaCheck } from "react-icons/fa";
 import SearchContext from '../context/SearchContext';
 import { ImCross } from "react-icons/im";
 //react-redux
@@ -29,7 +28,7 @@ const Card = () => {
         toast.error(`${username} deleted successfully`)
     }
 
-    //Approved the User 
+    //Approved the User
     const handleApprovedUser = async (id, username) => {
         await dispatch(approveUser(id));
         dispatch(fetchRoleData(capitalizedRole));

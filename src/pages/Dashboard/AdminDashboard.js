@@ -24,8 +24,8 @@ const AdminDashboard = () => {
 
                 <div className="mt-6 mb-4 flex flex-wrap justify-center sm:justify-between items-center gap-4">
                     <div>
-                        <Link to="/admin-dashboard/card"
-                            className='px-5 py-2 hover:bg-gray-200 rounded-md text-sm text-gray-800 mr-2'>Card View</Link>
+                        {/* <Link to="/admin-dashboard/card"
+                            className='px-5 py-2 hover:bg-gray-200 rounded-md text-sm text-gray-800 mr-2'>Card View</Link> */}
                         <Link to="/admin-dashboard/table"
                             className='px-5 py-2 hover:bg-gray-200 rounded-md text-sm text-gray-800'>Table View</Link>
                     </div>
