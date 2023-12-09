@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.hoverEffect::after {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 2px;
+    background-color: black;
+    /* or any other color you prefer */
+    margin: auto;
+    transition: all 0.7s ease-in-out;
+
+}
+
+.hoverEffect:hover::after {
+    width: 50%;
+}
+
+
+/* textSlider */
+.textShopHubParent {
+    overflow: hidden;
+    height: 30px;
+    position: relative;
+    width: 500px;
+    text-align: center;
+}
+
+
+.textShopHubChild {
+    right: 0;
+    top: 0;
+    animation: mymove 4s linear infinite;
+    position: absolute;
+}
+
+@keyframes mymove {
+    from {
+        left: 100%
+    }
+
+    to {
+        left: -190%
+    }
+}
+
+/* --background img-- */
+
+.bgImg {
+    position: relative;
+    z-index: 1;
+}
+
+.bgImg::after {
+    content: "";
+    background: url('../public/Homeimg/bgImg.jpg') no-repeat center center/cover;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.2;
+    border-radius: 20px;
+
+}
+
+
+/* -----Admin----  */
+
+
+/* Card on Hover In Card.js */
+.card-content {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.7s ease-in-out,
+}
+
+.card:hover .card-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+
+/* Standard Fade CSS for non-reversed sections */
+.fade-enter {
+    opacity: 0.01;
+    transform: translateX(-160px);
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transform: translateX(0px);
+    transition: opacity 1000ms ease-in-out, transform 1000ms ease-in-out;
+}
+
+.fade-exit {
+    opacity: 1;
+    transform: translateX(-160px);
+}
+
+.fade-exit-active {
+    opacity: 0.01;
+    transform: translateX(0px);
+    transition: opacity 1000ms ease-in-out, transform 1000ms ease-in-out;
+}
