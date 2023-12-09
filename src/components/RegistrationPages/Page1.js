@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { HiOutlineUser } from "react-icons/hi"
 import { FiMail } from "react-icons/fi"
 import { RiLockPasswordFill } from "react-icons/ri"
-import { AiFillEyeInvisible, AiFillEye, AiOutlineIdcard } from "react-icons/ai"
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 import { BiPhone } from "react-icons/bi"
 import { MdDateRange } from "react-icons/md"
 import { FaRegAddressBook } from "react-icons/fa"

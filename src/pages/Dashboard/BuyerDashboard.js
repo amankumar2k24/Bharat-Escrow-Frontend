@@ -25,7 +25,7 @@ const BuyerDashboard = () => {
 
                 <div className="mt-6 mb-4 flex flex-wrap justify-center sm:justify-between items-center gap-4">
                     <div>
-                        <Link to="/buyer-dashboard/card" className='px-5 py-2 hover:bg-gray-200 rounded-md text-sm text-gray-700 mr-2'>Card View</Link>
+                        {/* <Link to="/buyer-dashboard/card" className='px-5 py-2 hover:bg-gray-200 rounded-md text-sm text-gray-700 mr-2'>Card View</Link> */}
                         <Link to="/buyer-dashboard/table" className='px-5 py-2 hover:bg-gray-200 rounded-md text-sm text-gray-700'>Table View</Link>
                     </div>
 

@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import homeBgImg from "../../assets/Home/homeBgImg.jpg"
 
 const OverviewDo = () => {
 

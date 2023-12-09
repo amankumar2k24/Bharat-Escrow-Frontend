@@ -13,7 +13,7 @@ const App = () => {
     if (location.pathname === "" || location.pathname === "/") {
       navigate("/login")
     }
-  }, [location])
+  }, [location, navigate])
 
   return (
     <>

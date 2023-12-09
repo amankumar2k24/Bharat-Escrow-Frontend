@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import LoginImg from "../../assets/login/loginImg.jpg"
 import { RiLockPasswordFill } from "react-icons/ri"
 import { FiMail } from "react-icons/fi"

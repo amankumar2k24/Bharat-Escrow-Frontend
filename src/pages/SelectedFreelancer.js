@@ -1,9 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import FreelancerImg from "../assets/FreelancerImg.jpg"
-import FreelancerImg2 from "../assets/FreelancerImg2.png"
-import { FaStar } from "react-icons/fa6"
-import { useSelector } from 'react-redux'
+// import { Link } from 'react-router-dom'
+// import FreelancerImg from "../assets/FreelancerImg.jpg"
+// import FreelancerImg2 from "../assets/FreelancerImg2.png"
+// import { FaStar } from "react-icons/fa6"  
+// import { useSelector } from 'react-redux'
 
 const SelectedFreelancer = () => {
     // const data = useSelector((state) => state.choosefreelancer.selectedFreelancer)

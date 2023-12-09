@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import { selectForm, setFormValue } from '../../store/slice/formSlice';
+import { useNavigate } from 'react-router-dom';
+import { setFormValue } from '../../store/slice/formSlice';
 import { toast } from 'react-toastify';
 
 const allLanguages = [
@@ -14,7 +14,6 @@ const allLanguages = [
 ];
 
 const PersonalInfo = () => {
-    const [productImg, setProductImg] = useState("")
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const personalInfo = useSelector((state) => state.form.personalInfo)
@@ -39,26 +38,12 @@ const PersonalInfo = () => {
 
     const handleFileInput = (e) => {
         const selectedFile = e.target.files[0]
-        TransformFile(selectedFile)
+        // TransformFile(selectedFile)
         // if (selectedFile) {
         //     handleInputChange("profilePicture", e.target.files[0])
         // }
         const localImageUrl = window.URL.createObjectURL(selectedFile);
         dispatch(setFormValue({ section: "personalInfo", key: "profilePicture", value: localImageUrl }))
-    }
-
-    // This code is used to generate base64 and with the help of TransformFile function the image are showing on the screen
-    const TransformFile = (selectedFile) => {
-        const reader = new FileReader();
-
-        if (selectedFile) {
-            reader.readAsDataURL(selectedFile);
-            reader.onloadend = () => {
-                setProductImg(reader.result)
-            }
-        } else {
-            setProductImg("")
-        }
     }
 
 
@@ -163,7 +148,7 @@ const PersonalInfo = () => {
                                             type="checkbox"
                                             id={lang.toLowerCase()}
                                             value={lang.toLowerCase()}
-                                            defaultChecked={personalInfo.languages.filter((item) => item == lang).length == 0 ? false : true}
+                                            defaultChecked={personalInfo.languages.filter((item) => item === lang).length === 0 ? false : true}
                                             onChange={() => handleInputChange('languages', toggleLanguage(personalInfo.languages, lang))}
                                         />
                                         <label className='ml-[2px]' htmlFor={lang.toLowerCase()}>{lang}</label>

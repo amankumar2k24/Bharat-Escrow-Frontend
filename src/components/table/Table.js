@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-import SearchContext from '../context/SearchContext'
+import SearchContext from '../../context/SearchContext'
 import { useLocation } from 'react-router-dom'
 import { ImCross } from "react-icons/im";
 //react-redux
 import { useDispatch, useSelector } from 'react-redux'
-import { approveUser, deleteUser, fetchRoleData } from '../store/slice/roleSlice'
+import { approveUser, deleteUser, fetchRoleData } from '../../store/slice/roleSlice'
 import { toast } from 'react-toastify';
 
 
@@ -99,13 +99,13 @@ const Table = () => {
                                         Remove
                                     </button>
 
-                                    {(userDetails.type === "admin") && (location.pathname === "/admin-dashboard") || (location.pathname === "/admin-dashboard/table") &&
+                                    {(((userDetails.type === "admin") && (location.pathname === "/admin-dashboard")) || (location.pathname === "/admin-dashboard/table")) && (
                                         < button className="text-xs font-bold px-4 py-1 sm:ml-2 rounded bg-green-500 text-white hover:bg-green-600"
                                             onClick={() => handleApprovedUser(data._id, data.username)}
                                         >
                                             Approved
                                         </button>
-                                    }
+                                    )}
                                 </td>
                             </tr>
                         )
@@ -145,19 +145,20 @@ const Table = () => {
                                             Remove User
                                         </button>
 
-                                        {userDetails.type === "admin" && location.pathname === "/admin-dashboard" || location.pathname === "/admin-dashboard/card" &&
+                                        {userDetails.type === "admin" && location.pathname === "/admin-dashboard" && (
                                             < button className="font-bold text-md  bg-green-500 text-white hover:bg-green-600 py-2 px-4  rounded shadow-md transition duration-300 ease-in-out transform hover:scale-105"
                                                 onClick={() => handleApprovedUser(selectedUser._id, selectedUser.username)}
                                             >
                                                 Approved
                                             </button>
-                                        }
+                                        )}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             )}
         </table >
     )

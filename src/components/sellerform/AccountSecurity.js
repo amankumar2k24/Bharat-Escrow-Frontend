@@ -111,7 +111,7 @@ const AccountSecurity = () => {
                                     disabled={counter > 0 || verifiedOTP}
                                     onClick={(e) => handleSendOTP(e)}
                                 >
-                                    {counter != 0 ? counter : verifiedOTP ? "Verified" : "sendOTP"}
+                                    {counter !== 0 ? counter : verifiedOTP ? "Verified" : "sendOTP"}
                                 </button>
                             </div>
                         </div>

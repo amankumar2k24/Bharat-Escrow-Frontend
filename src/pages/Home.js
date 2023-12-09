@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Footer from '../components/Footer'
 import Box from '../components/Box'
 import MSME from "../assets/Home/MSME.jpg"
@@ -11,12 +11,12 @@ import websiteDevelopment from "../assets/Home/websiteDevelopment.jpg"
 import homeBgImg from "../assets/Home/homeBgImg.jpg"
 import Payment from "../assets/Home/Payment.jpg"
 import Car1 from '../assets/buyorsell/Car1.jpg'
-import FreelancerImg from "../assets/FreelancerImg.jpg"
-import { FaStar } from "react-icons/fa6"
+// import FreelancerImg from "../assets/FreelancerImg.jpg"
+// import { FaStar } from "react-icons/fa6"
 import { Link } from 'react-router-dom'
 // import { fetchFreelancerData, selectFreelancer, STATUSES } from '../store/slice/freelancerSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import ErrorPage from '../routes/ErrorPage'
+// import { useDispatch, useSelector } from 'react-redux'
+// import ErrorPage from '../routes/ErrorPage'
 
 
 const Home = () => {
