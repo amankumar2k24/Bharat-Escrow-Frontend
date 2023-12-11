@@ -102,7 +102,7 @@ const Navbar = () => {
                                     {userDetails?.type !== "user" &&
                                         <li>
                                             <Link
-                                                to={userDetails?.type === "admin" ? "/admin-dashboard/table" :
+                                                to={userDetails?.type === "admin" ? "/admin-dashboard/user" :
                                                     userDetails?.type === "freelancer" ? "/freelancer-dashboard" :
                                                         userDetails?.type === "buyer" ? "/buyer-dashboard" : "/default-dashboard"}
                                                 className="block px-4 w-full py-2 text-center text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"

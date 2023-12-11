@@ -1,10 +1,13 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { setFormValue } from '../../store/slice/formSlice'
+import { toast } from 'react-toastify'
+import { SERVER_URL } from '../../constants'
 
 const AccountSecurity = () => {
+    const navigate = useNavigate()
     const [counter, setCounter] = useState(0);
     const dispatch = useDispatch()
     const { personalInfo, professionalInfo, accountSecurity } = useSelector((state) => state.form)
@@ -46,11 +49,32 @@ const AccountSecurity = () => {
 
 
     const handleFinishButton = async () => {
-        let body = { ...personalInfo, ...professionalInfo, ...accountSecurity, email: userDetails.email }
-        await axios.post("http://localhost:4100/seller/create-seller", body).then((res) => {
+        let tempData = { ...personalInfo, ...professionalInfo, ...accountSecurity, email: userDetails.email }
+
+        const formData = new FormData();
+
+        // Append other data
+        Object.keys(tempData).forEach((key) => {
+            formData.append(key, tempData[key]);
+        });
+
+        const config = {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        };
+        //FormData---------------------------------------->
+
+        try {
+            let res = await axios.post(`${SERVER_URL}/seller/create-seller`, formData, config)
             console.log(res)
-        }).catch((err) => console.log(err))
-        console.log(body)
+            if (res) {
+                navigate("/home")
+                toast.success(res.data.message)
+            }
+        } catch (err) {
+            toast.success(err.response.data.message)
+        }
     }
 
     return (

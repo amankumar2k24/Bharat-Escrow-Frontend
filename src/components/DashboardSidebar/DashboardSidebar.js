@@ -12,7 +12,7 @@ const DashboardSidebar = ({ setHide, hide, showAdmin, setShowAdmin, showSubAdmin
         <>
             {userDetails?.type === "admin" && (
                 <div className={`relative ${hide ? "w-[0px]" : "w-[330px]"} z-40 mt-10 `}>
-                    <div className={` bg-[rgb(1,66,106)] fixed ${hide ? "-left-[180px] mt-[88px] sm:mt-24" : "left-0 w-[220px] sm:w-[250px] mt-[88px] sm:mt-24"} transition-all duration-500 -top-4 h-full`}>
+                    <div className={` bg-[rgb(1,66,106)] fixed ${hide ? "-left-[180px] mt-32 sm:mt-24" : "left-0 w-[220px] sm:w-[250px] mt-32 sm:mt-24"} transition-all duration-500 -top-4 h-full`}>
                         {/* //Dashboard panel and hamburger  */}
                         <div className='realtive flex justify-between items-center px-2 py-2 gap-2 mt-12'>
                             <span className="text-xl text-center text-white capitalize font-bold">Dashboard Panel</span>
@@ -38,14 +38,24 @@ const DashboardSidebar = ({ setHide, hide, showAdmin, setShowAdmin, showSubAdmin
                                 <span className='text-lg font-medium'>Admin</span>
                             </li>
                             {showAdmin && (
-                                <ul className='flex flex-col pl-4'>
-                                    <li className='text-md text-white flex flex-row px-1 items-center bg-[#374351] hover:bg-white hover:text-[#374351] gap-4 py-2'
-                                        onClick={() => setShowAdmin(true)}
-                                    >
-                                        <MdPlayArrow />
-                                        <Link to='/admin-dashboard/table' >Admin</Link>
-                                    </li>
-                                </ul>
+                                <>
+                                    <ul className='flex flex-col pl-4'>
+                                        <li className='text-md text-white flex flex-row px-1 items-center bg-[#374351] hover:bg-white hover:text-[#374351] gap-4 py-2'
+                                            onClick={() => setShowAdmin(true)}
+                                        >
+                                            <MdPlayArrow />
+                                            <Link to='/admin-dashboard/user'>User</Link>
+                                        </li>
+                                    </ul>
+                                    <ul className='flex flex-col pl-4'>
+                                        <li className='text-md text-white flex flex-row px-1 items-center bg-[#374351] hover:bg-white hover:text-[#374351] gap-4 py-2'
+                                            onClick={() => setShowAdmin(true)}
+                                        >
+                                            <MdPlayArrow />
+                                            <Link to='/admin-dashboard/seller'>Seller</Link>
+                                        </li>
+                                    </ul>
+                                </>
                             )}
                         </ul>
 

@@ -5,8 +5,8 @@ export const formSlice = createSlice({
     name: 'form',
     initialState: {
         personalInfo: {
+            userID: null,
             fullName: '',
-            password: '',
             description: '',
             languages: [],
             profilePicture: null,

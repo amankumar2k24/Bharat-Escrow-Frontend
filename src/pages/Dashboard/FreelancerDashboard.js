@@ -24,10 +24,6 @@ const FreelancerDashboard = () => {
                 <h2 className='text-center text-2xl mb-6 sm:text-4xl md:text-5xl border-b pb-5'>Freelancer Dashboard</h2>
 
                 <div className="mt-6 mb-4 flex flex-wrap justify-center sm:justify-between items-center gap-4">
-                    <div>
-                        {/* <Link to="/freelancer-dashboard/card" className='px-5 py-2 hover:bg-gray-200 rounded-md text-sm text-gray-700 mr-2'>Card View</Link> */}
-                        <Link to="/freelancer-dashboard/table" className='px-5 py-2 hover:bg-gray-200 rounded-md text-sm text-gray-700'>Table View</Link>
-                    </div>
 
                     <div className="relative ">
                         <div className="absolute inset-y-0 left-0 flex items-center pl-3">

@@ -22,7 +22,7 @@ const PersonalInfo = () => {
     //validations
     const validation = () => {
         if (!personalInfo.fullName) return { isError: false, message: "Name is missing" }
-        else if (!personalInfo.password) return { isError: false, message: "Password is missing" }
+        if (!personalInfo.userID) return { isError: false, message: "User ID is missing" }
         else if (!personalInfo.description) return { isError: false, message: "Description is missing" }
         else if (personalInfo.languages.length === 0) return { isError: false, message: "Languages is missing" }
         else if (!personalInfo.profilePicture) return { isError: false, message: "Profile Picture is missing" }
@@ -42,8 +42,9 @@ const PersonalInfo = () => {
         // if (selectedFile) {
         //     handleInputChange("profilePicture", e.target.files[0])
         // }
-        const localImageUrl = window.URL.createObjectURL(selectedFile);
-        dispatch(setFormValue({ section: "personalInfo", key: "profilePicture", value: localImageUrl }))
+        const user = JSON.parse(localStorage.getItem("user"))
+        dispatch(setFormValue({ section: "personalInfo", key: "profilePicture", value: selectedFile }))
+        dispatch(setFormValue({ section: "personalInfo", key: "userID", value: user._id }))
     }
 
 
@@ -96,23 +97,6 @@ const PersonalInfo = () => {
                                 placeholder='Enter your name'
                                 value={personalInfo.fullName || ""}
                                 onChange={(e) => handleInputChange("fullName", e.target.value)}
-                            />
-                        </div>
-                    </div>
-                    {/* // password  */}
-                    <div className="md:flex md:items-center mb-6">
-                        <div className="md:w-1/3">
-                            <label className="block text-slate-200 font-bold mb-1 md:mb-0 pr-4" htmlFor="password">
-                                Password
-                            </label>
-                        </div>
-                        <div className="md:w-2/3">
-                            <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-600"
-                                id="password"
-                                type="password"
-                                placeholder="******************"
-                                value={personalInfo.password || ""}
-                                onChange={(e) => handleInputChange("password", e.target.value)}
                             />
                         </div>
                     </div>
@@ -171,7 +155,9 @@ const PersonalInfo = () => {
                                 {/* //box image is showing  */}
                                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                                     {personalInfo.profilePicture ?
-                                        <img className='w-[200px] h-[200px] object-cover rounded-full' src={personalInfo.profilePicture} alt='product Img!' />
+                                        <img className='w-[200px] h-[200px] object-cover rounded-full'
+                                            src={window.URL.createObjectURL(personalInfo.profilePicture)}
+                                            alt='product Img!' />
                                         :
                                         <>
                                             <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
