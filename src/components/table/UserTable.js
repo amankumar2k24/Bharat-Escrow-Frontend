@@ -3,12 +3,10 @@ import SearchContext from '../../context/SearchContext'
 import { Link, useLocation } from 'react-router-dom'
 //react-redux
 import { useDispatch, useSelector } from 'react-redux'
-import { approveUser, deleteUser, fetchRoleData, setIndividualDetail } from '../../store/slice/roleSlice'
-import { toast } from 'react-toastify';
+import { fetchRoleData, setIndividualDetail } from '../../store/slice/roleSlice'
 
 const UserTable = () => {
     const { searchTerm } = useContext(SearchContext)
-    const userDetails = JSON.parse(localStorage.getItem("user"))
     const location = useLocation()
     //react-redux
     const dispatch = useDispatch()

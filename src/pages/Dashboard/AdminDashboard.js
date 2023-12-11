@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { HiSearch } from "react-icons/hi"
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import SearchContext from '../../context/SearchContext'
 import DashboardSidebar from '../../components/DashboardSidebar/DashboardSidebar'
 

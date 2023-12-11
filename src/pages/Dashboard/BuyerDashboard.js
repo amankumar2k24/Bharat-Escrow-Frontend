@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { HiSearch } from "react-icons/hi"
-import { Link, Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import SearchContext from '../../context/SearchContext'
 import DashboardSidebar from '../../components/DashboardSidebar/DashboardSidebar';
 
@@ -24,7 +24,7 @@ const BuyerDashboard = () => {
                 <h2 className='text-center text-2xl mb-6 sm:text-4xl md:text-5xl border-b pb-5'>Buyer Dashboard</h2>
 
                 <div className="mt-6 mb-4 flex flex-wrap justify-center sm:justify-between items-center gap-4">
-                    
+
                     <div className="relative ">
                         <div className="absolute inset-y-0 left-0 flex items-center pl-3">
                             <HiSearch className='text-gray-400' />

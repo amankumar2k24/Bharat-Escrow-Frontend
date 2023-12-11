@@ -1,15 +1,13 @@
-import React, { useContext, useEffect } from 'react'
-import SearchContext from '../../context/SearchContext'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useEffect } from 'react'
+// import SearchContext from '../../context/SearchContext'
+import { Link } from 'react-router-dom'
 //react-redux
 import { useDispatch, useSelector } from 'react-redux'
-import { approveUser, deleteUser, fetchRoleData, fetchSellerData, setIndividualDetail } from '../../store/slice/roleSlice'
-import { toast } from 'react-toastify';
+import { fetchSellerData, setIndividualDetail } from '../../store/slice/roleSlice'
 
 const SellerTable = () => {
-    const { searchTerm } = useContext(SearchContext)
-    const userDetails = JSON.parse(localStorage.getItem("user"))
-    const location = useLocation()
+    // const { searchTerm } = useContext(SearchContext)
+
     //react-redux
     const dispatch = useDispatch()
     const data = useSelector((state) => state?.role?.sellerData)
