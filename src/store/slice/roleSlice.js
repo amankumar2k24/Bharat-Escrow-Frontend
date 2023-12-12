@@ -21,14 +21,17 @@ const roleSlice = createSlice({
     },
     reducers: {
         setIndividualDetail: (state, action) => {
-            console.log(action.payload)
             if (action.payload.type === "user") {
                 state.individualUserDetail = action.payload.data
             } else if (action.payload.type === "seller") {
                 state.individualSellerDetail = action.payload.data
             }
-
         },
+        setDeleteUser: (state, action) => {
+            if (action.payload) {
+                state.data = state.data.filter(user => user._id !== action.payload);
+            }
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -91,11 +94,8 @@ export const fetchRoleData = createAsyncThunk('role/fetchData', async (role, { g
 });
 
 // Async thunk for fetching seller data
-export const fetchSellerData = createAsyncThunk('seller/fetchData', async (_, { getState }) => {
+export const fetchSellerData = createAsyncThunk('seller/fetchData', async () => {
     const res = await axios.get(`http://localhost:4100/seller/get-seller`);
-    // const updateData = getState().role.data
-    console.log(res.data.result)
-    // localStorage.setItem("userData", JSON.stringify(updateData))
     const data = await res.data.result;
     return data
 });
@@ -115,6 +115,7 @@ export const deleteUser = createAsyncThunk('role/deleteUser', async (userId) => 
 });
 
 
+
 // export reducers
 export default roleSlice.reducer;
-export const { setIndividualDetail } = roleSlice.actions
+export const { setIndividualDetail, setDeleteUser } = roleSlice.actions

@@ -7,17 +7,18 @@ import { toast } from 'react-toastify'
 import { SERVER_URL } from '../../constants'
 
 const AccountSecurity = () => {
-    const navigate = useNavigate()
-    const [counter, setCounter] = useState(0);
-    const dispatch = useDispatch()
-    const { personalInfo, professionalInfo, accountSecurity } = useSelector((state) => state.form)
     const userDetails = JSON.parse(localStorage.getItem("user"))
+    const [counter, setCounter] = useState(0);
     const [sendOTP, setSendOTP] = useState(false)
     const [verifiedOTP, setVerifiedOTP] = useState(false)
+    const navigate = useNavigate()
+    //redux-toolkit
+    const dispatch = useDispatch()
+    const { personalInfo, professionalInfo, accountSecurity } = useSelector((state) => state.form)
 
+    //for countDown Timer
     useEffect(() => {
-        const timer =
-            counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
+        const timer = counter > 0 && setInterval(() => setCounter(counter - 1), 1000);
         return () => clearInterval(timer);
     }, [counter]);
 
@@ -25,7 +26,6 @@ const AccountSecurity = () => {
         e.preventDefault()
         await axios.post(`http://localhost:4100/seller/sendOtp`, { phone: accountSecurity.phone })
             .then((res) => {
-                // setInterval(() => setCounter(counter - 1), 1000);
                 setCounter(60)
                 console.log(res)
                 setSendOTP(true)
@@ -43,7 +43,6 @@ const AccountSecurity = () => {
                     setVerifiedOTP(true)
                     setSendOTP(false)
                 }
-                setVerifiedOTP(true)
             }).catch((err) => console.log(err))
     }
 
@@ -127,7 +126,6 @@ const AccountSecurity = () => {
                                     id="phone"
                                     type="tel"
                                     placeholder="Enter your phone number"
-                                    // defaultValue={accountSecurity.phone}
                                     onChange={(e) => dispatch(setFormValue({ section: "accountSecurity", key: "phone", value: e.target.value }))}
                                 />
 

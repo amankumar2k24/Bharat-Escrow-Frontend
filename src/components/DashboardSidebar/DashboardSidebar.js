@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MdPlayArrow } from 'react-icons/md';
 import { VscTriangleDown } from 'react-icons/vsc';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -8,12 +8,24 @@ import { Link } from 'react-router-dom';
 const DashboardSidebar = ({ setHide, hide, showAdmin, setShowAdmin, showSubAdmin, setShowSubAdmin }) => {
     const userDetails = JSON.parse(localStorage.getItem("user"))
 
+    useEffect(() => {
+        const updateScreenSize = () => {
+            setHide(window.innerWidth <= 910);
+        };
+
+        updateScreenSize();
+
+        window.addEventListener('resize', updateScreenSize);
+        return () => window.removeEventListener('resize', updateScreenSize);
+    }, [setHide]);
+
+
     return (
         <>
             {userDetails?.type === "admin" && (
                 <div className={`relative ${hide ? "w-[0px]" : "w-[330px]"} z-40 mt-10 `}>
+
                     <div className={` bg-[rgb(1,66,106)] fixed ${hide ? "-left-[180px] mt-32 sm:mt-24" : "left-0 w-[220px] sm:w-[250px] mt-32 sm:mt-24"} transition-all duration-500 -top-4 h-full`}>
-                        {/* //Dashboard panel and hamburger  */}
                         <div className='realtive flex justify-between items-center px-2 py-2 gap-2 mt-12'>
                             <span className="text-xl text-center text-white capitalize font-bold">Dashboard Panel</span>
                             <button data-collapse-toggle="navbar-user" type="button"
@@ -37,11 +49,15 @@ const DashboardSidebar = ({ setHide, hide, showAdmin, setShowAdmin, showSubAdmin
                                 {showAdmin ? <VscTriangleDown /> : <MdPlayArrow />}
                                 <span className='text-lg font-medium'>Admin</span>
                             </li>
+                            
                             {showAdmin && (
                                 <>
                                     <ul className='flex flex-col pl-4'>
                                         <li className='text-md text-white flex flex-row px-1 items-center bg-[#374351] hover:bg-white hover:text-[#374351] gap-4 py-2'
-                                            onClick={() => setShowAdmin(true)}
+                                            onClick={() => {
+                                                setShowAdmin(true);
+                                                setHide(!hide)
+                                            }}
                                         >
                                             <MdPlayArrow />
                                             <Link to='/admin-dashboard/user'>User</Link>
@@ -49,7 +65,10 @@ const DashboardSidebar = ({ setHide, hide, showAdmin, setShowAdmin, showSubAdmin
                                     </ul>
                                     <ul className='flex flex-col pl-4'>
                                         <li className='text-md text-white flex flex-row px-1 items-center bg-[#374351] hover:bg-white hover:text-[#374351] gap-4 py-2'
-                                            onClick={() => setShowAdmin(true)}
+                                            onClick={() => {
+                                                setShowAdmin(true);
+                                                setHide(!hide)
+                                            }}
                                         >
                                             <MdPlayArrow />
                                             <Link to='/admin-dashboard/seller'>Seller</Link>
@@ -82,7 +101,7 @@ const DashboardSidebar = ({ setHide, hide, showAdmin, setShowAdmin, showSubAdmin
                             )}
                         </ul>
                     </div>
-                </div>
+                </div >
             )}
         </>
     )

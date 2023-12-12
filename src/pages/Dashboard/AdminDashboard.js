@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
-import { HiSearch } from "react-icons/hi"
-import { Outlet, useLocation } from 'react-router-dom'
-import SearchContext from '../../context/SearchContext'
+import { Outlet } from 'react-router-dom'
 import DashboardSidebar from '../../components/DashboardSidebar/DashboardSidebar'
 
 const AdminDashboard = () => {
-    const location = useLocation()
-    const [searchTerm, setSearchTerm] = useState("");
     const [showAdmin, setShowAdmin] = useState(false);
     const [showSubAdmin, setShowSubAdmin] = useState(false);
     const [hide, setHide] = useState(false)
@@ -20,41 +16,11 @@ const AdminDashboard = () => {
 
             {/* //Right section  */}
             <div className={` w-full px-2 pr-4 sm:px-10 mt-36 `}>
-
                 <h2 className='text-center text-gray-800 text-2xl mb-6 sm:text-4xl md:text-5xl border-b pb-5'>Admin Dashboard</h2>
-
-                <div className="mt-6 mb-4 flex flex-wrap justify-center sm:justify-between items-center gap-4">
-
-
-                    {
-
-                        location.pathname !== "/admin-dashboard/individual-user-detail" && (
-                            <>
-                                <div className="relative ">
-                                    <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-                                        <HiSearch className='text-gray-400' />
-                                    </div>
-                                    <input
-                                        type="text"
-                                        id="table-search"
-                                        className="block w-full pl-10 pr-4 py-2 text-sm text-gray-700 bg-gray-100 rounded-md placeholder-gray-500 focus:outline-none focus:bg-white focus:border-blue-300"
-                                        placeholder="Search by username..."
-                                        onChange={(e) => setSearchTerm(e.target.value)}
-                                    />
-                                </div>
-                            </>
-                        )
-                    }
-
-                </div>
-
-                <SearchContext.Provider value={{ searchTerm, setSearchTerm }}>
-                    <Outlet />
-                </SearchContext.Provider>
+                <Outlet />
             </div>
         </section>
     )
 }
 
 export default AdminDashboard;
-export { SearchContext }

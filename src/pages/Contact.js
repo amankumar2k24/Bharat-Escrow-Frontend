@@ -30,7 +30,7 @@ const Contact = () => {
                             allowFullScreen=""
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
-                            className=' h-[300px] w-full lg:w-1/3 px-4 '
+                            className='h-[300px] w-full lg:w-1/3 px-4'
                         />
 
                         {/* right  */}

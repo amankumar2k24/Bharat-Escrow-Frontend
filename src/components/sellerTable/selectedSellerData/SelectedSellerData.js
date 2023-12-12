@@ -8,12 +8,17 @@ import { useNavigate } from 'react-router-dom'
 import { setIndividualDetail } from '../../../store/slice/roleSlice'
 
 const SelectedSellerData = () => {
+    const sellerID = localStorage.getItem("selectedSellerID")
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [modal, setModal] = useState(false)
     const [adminMessage, setAdminMessage] = useState("")
-    const { individualSellerDetail } = useSelector((state) => state.role)
-    console.log("sellerData", individualSellerDetail)
+    const { individualSellerDetail, sellerData } = useSelector((state) => state.role)
+
+    useEffect(() => {
+        const data = sellerData.filter((item) => item._id === sellerID)
+        dispatch(setIndividualDetail({ type: "seller", data: data[0] }));
+    }, [dispatch, sellerID, sellerData])
 
 
     const handleStatus = (status) => {
@@ -90,7 +95,7 @@ const SelectedSellerData = () => {
                     </div>
 
                     {/* ////////Personal info---------------------------- */}
-                    <div className="border-b border-gray-900/10 pb-12">
+                    <div className=" pb-12 flex flex-col gap-y-4 ">
                         <h2 className="text-base font-semibold leading-7 text-gray-900">
                             Personal Information
                         </h2>
@@ -126,7 +131,15 @@ const SelectedSellerData = () => {
                             <label htmlFor="about" className="block text-sm font-medium leading-6 text-gray-900">
                                 Personal Website
                             </label>
-                            <a href={individualSellerDetail?.personalWebsite}>{individualSellerDetail?.personalWebsite}</a>
+
+                            <a
+                                rel="noreferrer"
+                                target='_blank'
+                                title={individualSellerDetail?.personalWebsite}
+                                href={individualSellerDetail?.personalWebsite}
+                            >
+                                {individualSellerDetail?.personalWebsite.slice(0, 30) + "..."}
+                            </a>
                         </div>
 
                         <div className="col-span-full flex flex-row justify-between">
@@ -149,7 +162,7 @@ const SelectedSellerData = () => {
 
                     </div>
                 </div>
-            </form>
+            </form >
 
             <div className='flex flex-row justify-between'>
                 <button

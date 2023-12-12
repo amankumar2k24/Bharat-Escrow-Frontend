@@ -52,10 +52,8 @@ export const formSlice = createSlice({
     },
 });
 
-export const { setFormValue, resetForm } = formSlice.actions;
-
-
 export default formSlice.reducer;
+export const { setFormValue, resetForm } = formSlice.actions;
 
 
 

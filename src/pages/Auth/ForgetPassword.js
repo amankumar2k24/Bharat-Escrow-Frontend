@@ -7,8 +7,6 @@ import axios from 'axios'
 import { SERVER_URL } from '../../constants'
 import { NavLink, useNavigate } from 'react-router-dom'
 
-
-
 const ForgetPassword = () => {
     const navigate = useNavigate()
     const [changeScreen, setChangeScreen] = useState(true)

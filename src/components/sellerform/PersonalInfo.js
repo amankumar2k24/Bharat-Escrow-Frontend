@@ -4,20 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import { setFormValue } from '../../store/slice/formSlice';
 import { toast } from 'react-toastify';
 
-const allLanguages = [
-    'English',
-    'Spanish',
-    'French',
-    'German',
-    'Chinese',
-    "Hindi"
-];
+const allLanguages = ['English','Spanish','French','German','Chinese',"Hindi"];
 
 const PersonalInfo = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const personalInfo = useSelector((state) => state.form.personalInfo)
-    console.log(personalInfo)
 
     //validations
     const validation = () => {
@@ -38,10 +30,6 @@ const PersonalInfo = () => {
 
     const handleFileInput = (e) => {
         const selectedFile = e.target.files[0]
-        // TransformFile(selectedFile)
-        // if (selectedFile) {
-        //     handleInputChange("profilePicture", e.target.files[0])
-        // }
         const user = JSON.parse(localStorage.getItem("user"))
         dispatch(setFormValue({ section: "personalInfo", key: "profilePicture", value: selectedFile }))
         dispatch(setFormValue({ section: "personalInfo", key: "userID", value: user._id }))
@@ -72,7 +60,6 @@ const PersonalInfo = () => {
     return (
         <div className='mt-36 md:mt-32 pb-10 container mx-auto w-full flex justify-center px-4'>
             <div className='max-w-[1024px] w-full rounded-lg'>
-                {/* form  */}
 
                 <div className='bg-gray-600 w-full text-center rounded-t-lg text-white leadt py-5 mt-8  '>
                     <div className='font-bold uppercase text-3xl sm:text-4xl md:text-4xl '>
