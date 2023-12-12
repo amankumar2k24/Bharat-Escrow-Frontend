@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
 
 const initialData = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : []
+const initialSellerData = localStorage.getItem("sellerData") ? JSON.parse(localStorage.getItem("sellerData")) : []
 
 export const STATUSES = Object.freeze({
     IDLE: "idle",
@@ -13,7 +14,7 @@ const roleSlice = createSlice({
     name: "role",
     initialState: {
         data: initialData,
-        sellerData: [],
+        sellerData: initialSellerData,
         status: STATUSES.IDLE,
         individualUserDetail: null,
         individualSellerDetail: null
@@ -48,6 +49,7 @@ const roleSlice = createSlice({
             .addCase(fetchSellerData.fulfilled, (state, action) => {
                 // state.status = STATUSES.IDLE
                 state.sellerData = action.payload
+                localStorage.setItem("sellerData", JSON.stringify(state.sellerData))
             })
             .addCase(fetchSellerData.rejected, (state, action) => {
                 // state.status = STATUSES.ERROR
@@ -83,7 +85,6 @@ const roleSlice = createSlice({
 export const fetchRoleData = createAsyncThunk('role/fetchData', async (role, { getState }) => {
     const res = await axios.get(`http://localhost:4100/user/get-users-by/${role}`);
     // const updateData = getState().role.data
-    console.log(res.data.result)
     // localStorage.setItem("userData", JSON.stringify(updateData))
     const data = await res.data.result;
     return data
