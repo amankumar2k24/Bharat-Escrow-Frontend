@@ -34,9 +34,9 @@ const DashboardSidebar = ({ setHide, hide, showAdmin, setShowAdmin, showSubAdmin
                             >
                                 {
                                     hide ?
-                                        <RxCross2 size={20} />
-                                        :
                                         <GiHamburgerMenu size={20} />
+                                        :
+                                        <RxCross2 size={20} />
                                 }
                             </button>
                         </div>
@@ -49,7 +49,7 @@ const DashboardSidebar = ({ setHide, hide, showAdmin, setShowAdmin, showSubAdmin
                                 {showAdmin ? <VscTriangleDown /> : <MdPlayArrow />}
                                 <span className='text-lg font-medium'>Admin</span>
                             </li>
-                            
+
                             {showAdmin && (
                                 <>
                                     <ul className='flex flex-col pl-4'>

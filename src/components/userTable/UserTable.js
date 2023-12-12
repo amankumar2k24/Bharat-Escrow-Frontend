@@ -23,7 +23,6 @@ const UserTable = () => {
         localStorage.setItem("selectedUserID", item._id)
     }
 
-
     return (
         < table className="w-full text-sm text-left text-gray-500 bg-[rgb(1,66,106)] shadow-md rounded-lg overflow-hidden" >
 

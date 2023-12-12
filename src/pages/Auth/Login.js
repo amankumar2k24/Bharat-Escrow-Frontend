@@ -10,6 +10,7 @@ import { SERVER_URL } from '../../constants'
 
 
 const Login = () => {
+    const [loading, setLoading] = useState(false)
     const [hide, setHide] = useState(true)
     const navigate = useNavigate()
     const [credentials, setCredentials] = useState({
@@ -32,24 +33,25 @@ const Login = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault()
+        setLoading(true)
         if (validation().isError) {
             try {
                 let res = await axios?.post(`${SERVER_URL}/user/login`, credentials)
-                // console.log(res)
                 toast.success(res.data.message)
                 localStorage.setItem("token", res.data.token)
                 if (res && res.data.user.type !== "user") {
                     localStorage.setItem("user", JSON.stringify(res?.data?.user))
                     navigate("/dashboard")
                 } else {
-                    // } else if (res.data.user.type === "user") {
                     localStorage.setItem("user", JSON.stringify(res?.data?.user))
                     navigate("/home")
                 }
             } catch (err) {
+                setLoading(false)
                 toast.error(err?.response?.data?.message)
             }
         } else {
+            setLoading(false)
             toast.error(validation().message)
         }
     }
@@ -120,7 +122,7 @@ const Login = () => {
                                                     <button className="block w-full max-w-xs mx-auto bg-[#096aa6] transition-all 0.5s ease-in-out hover:bg-[rgb(1,66,106)]  text-white rounded-lg px-3 py-3 font-semibold"
                                                         onClick={handleLogin}
                                                     >
-                                                        LOGIN
+                                                        {loading ? "Loading..." : "Login"}
                                                     </button>
                                                 </div>
                                             </div>
