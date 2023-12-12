@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import PrivateRoutes from '../routes/PrivateRoutes'
-import { fetchSellerData } from '../store/slice/roleSlice'
+import { fetchRoleData, fetchSellerData } from '../store/slice/roleSlice'
 import { useDispatch } from 'react-redux'
 import { useLocation } from 'react-router-dom'
 
@@ -13,6 +13,7 @@ const HomeWrapper = () => {
 
     useEffect(() => {
         dispatch((fetchSellerData()))
+        dispatch((fetchRoleData(capitalizedRole)))
     }, [dispatch, capitalizedRole])
 
     return (
