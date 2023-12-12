@@ -24,7 +24,7 @@ const AccountSecurity = () => {
 
     const handleSendOTP = async (e) => {
         e.preventDefault()
-        await axios.post(`http://localhost:4100/seller/sendOtp`, { phone: accountSecurity.phone })
+        await axios.post(`${SERVER_URL}/seller/sendOtp`, { phone: accountSecurity.phone })
             .then((res) => {
                 setCounter(60)
                 console.log(res)
@@ -35,7 +35,7 @@ const AccountSecurity = () => {
 
     const handleVerifiedOTP = async (e) => {
         e.preventDefault()
-        await axios.post(`http://localhost:4100/seller/verifyOtp`, { phone: accountSecurity.phone, otp: accountSecurity.otp })
+        await axios.post(`${SERVER_URL}/seller/verifyOtp`, { phone: accountSecurity.phone, otp: accountSecurity.otp })
             .then((res) => {
                 console.log(res)
                 if (res.data.success) {

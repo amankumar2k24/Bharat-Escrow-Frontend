@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axios from "axios"
+import { SERVER_URL } from "../../constants"
 
 const initialData = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : []
 const initialSellerData = localStorage.getItem("sellerData") ? JSON.parse(localStorage.getItem("sellerData")) : []
@@ -86,7 +87,8 @@ const roleSlice = createSlice({
 
 // Async thunk for fetching user data
 export const fetchRoleData = createAsyncThunk('role/fetchData', async (role, { getState }) => {
-    const res = await axios.get(`http://localhost:4100/user/get-users-by/${role}`);
+    const res = await axios.get(`${SERVER_URL}/user/get-users-by/${role}`);
+
     // const updateData = getState().role.data
     // localStorage.setItem("userData", JSON.stringify(updateData))
     const data = await res.data.result;
@@ -95,23 +97,22 @@ export const fetchRoleData = createAsyncThunk('role/fetchData', async (role, { g
 
 // Async thunk for fetching seller data
 export const fetchSellerData = createAsyncThunk('seller/fetchData', async () => {
-    const res = await axios.get(`http://localhost:4100/seller/get-seller`);
+    const res = await axios.get(`${SERVER_URL}/seller/get-seller`);
     const data = await res.data.result;
     return data
 });
 
 // Async thunk for approving a user
 export const approveUser = createAsyncThunk('role/approveUser', async (userId, { getState }) => {
-    const res = await axios.patch(`http://localhost:4100/user/approved-user/${userId}`);
+    const res = await axios.patch(`${SERVER_URL}/user/approved-user/${userId}`);
     return res.data.result;
 });
 
 // Async thunk for deleting a user
 export const deleteUser = createAsyncThunk('role/deleteUser', async (userId) => {
-    const res = await axios.delete(`http://localhost:4100/user/delete-user/${userId}`);
+    const res = await axios.delete(`${SERVER_URL}/user/delete-user/${userId}`);
     return res.data;
 });
-
 
 
 // export reducers
