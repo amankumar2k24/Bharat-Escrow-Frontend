@@ -103,8 +103,6 @@ export const fetchSellerData = createAsyncThunk('seller/fetchData', async () => 
 // Async thunk for approving a user
 export const approveUser = createAsyncThunk('role/approveUser', async (userId, { getState }) => {
     const res = await axios.patch(`http://localhost:4100/user/approved-user/${userId}`);
-    // const updateData = getState().role.data.filter(user => user._id !== userId)
-    // localStorage.setItem("userData", JSON.stringify(updateData))
     return res.data.result;
 });
 

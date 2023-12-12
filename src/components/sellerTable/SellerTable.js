@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react'
-// import SearchContext from '../../context/SearchContext'
 import { Link } from 'react-router-dom'
 //react-redux
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchSellerData, setIndividualDetail } from '../../store/slice/roleSlice'
 
 const SellerTable = () => {
-    // const { searchTerm } = useContext(SearchContext)
 
     //react-redux
     const dispatch = useDispatch()
